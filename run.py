@@ -58,9 +58,9 @@ class Board:
 
         if(row, col) in self.hidden_ships:
             #If the guessed location contains a hidden ship, mark it as '💥'
-            self.grind[row][col] = '💥'
+            self.grid[row][col] = '💥'
             return True
-        elif self.grind[row][col] == ' ':
+        elif self.grid[row][col] == ' ':
             #If the guessed location is empty, mark it as '❌'
             self.grid[row][col] = '❌'
         return False
@@ -85,7 +85,7 @@ def get_valid_coordinate(promt, size, guessed_coordinates):
     """This function validate the player's input for row and column coordinates."""
 
     while True:
-        coordinate = input(prompt)
+        coordinate = input(promt)
         #Check if input is alphabetic (A, B, C, etc.)
         if coordinate.isalpha():
             #Convert letter to numeric column index
@@ -139,35 +139,36 @@ def game():
     computer_score = 0
 
     #Lists to store player's and computer's guesses
-    player_gusses = []
+    player_guesses = []
     computer_guesses = []
 
     #The Game loop
     while True:
 
-    #Display the boards
-    print(f"\n{player_name}'s Board:")
-    player_board.display(show_ships=True)
+        #Display the boards
+        print(f"\n{player_name}'s Board:")
+        player_board.display(show_ships=True)
 
-    print("\nComputer's Board:")
-    computer_board.display()
+        print("\nComputer's Board:")
+        computer_board.display()
 
-    #Player's turn
-    print("\nYour turn:")
-    row = get_valid_coordinate("Enter row (0 to 4): ", size, player_guesses)
-    col = get_valid_coordinate("Enter column (A to E): ", size, player_guesses)
+        #Player's turn
+        print("\nYour turn:")
+        row = get_valid_coordinate("Enter row (0 to 4): ", size, player_guesses)
+        col = get_valid_coordinate("Enter column (A to E): ", size, player_guesses)
 
-    #Record player's guess
-    player_coordinate = (col, row)
-    if player_coordinate in player_guesses:
-        print("You already shot there. Try a different location.")
-        continue
-    
-    player_guesses.append(player_coordinate)
+        #Record player's guess
+        player_coordinate = (col, row)
+        if player_coordinate in player_guesses:
+            print("You already shot there. Try a different location.")
+            continue
+        
+        player_guesses.append(player_coordinate)
 
-    if computer_board.make_guess(row,col):
-        print("Perfect! You hit an enemy ship! 💥\n")
+        if computer_board.make_guess(row,col):
+            print("Perfect! You hit an enemy ship! 💥\n")
             player_score += 1
+
         else:
             print("You missed!\n")
         
@@ -202,4 +203,4 @@ def game():
 
 #Execute the game function
 if __name__ == "__main__":
-    main()
+    game()
