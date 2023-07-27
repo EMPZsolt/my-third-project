@@ -81,7 +81,34 @@ def summary(player_name, player_score, computer_score):
     print("Computer's Score:", computer_score)
     print("-----------------------------------------")
 
-#def get_valid_coordinate():
+def get_valid_coordinate(promt, size, guessed_coordinates):
+    """This function validate the player's input for row and column coordinates."""
+
+    while True:
+        coordinate = input(prompt)
+        #Check if input is alphabetic (A, B, C, etc.)
+        if coordinate.isalpha():
+            #Convert letter to numeric column index
+            col = ord(coordinate.upper()) - ord('A')
+            if 0 <= col < size:
+                if (col, None) not in guessed_coordinates:
+                    return col
+                else:
+                    print("You already shot there. Try a different location.")
+            else:
+                print(f"Coordinates must be between A and {chr(ord('A') + size - 1)}.")
+        else:
+            try:
+                row = int(coordinate)
+                if 0 <= row < size:
+                    if (None, row) not in guessed_coordinates:
+                        return row
+                    else:
+                        print("You already shot there. Try a different location.")
+                else:
+                    print(f"Coordinates must be between 0 and {size - 1}.")
+            except ValueError:
+                print("Invalid input. Please enter a number or a letter.")
 
 def game():
     """Call all the necessary functions to run the game"""
