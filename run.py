@@ -1,6 +1,6 @@
 import random
 
-""" A dictionary to keep track of scores for the computer and player"""
+"""A dictionary to keep track of scores for the computer and player"""
 scores = {"computer": 0, "player": 0} 
 
 class Board:
@@ -21,13 +21,13 @@ class Board:
 
         for _ in range(num_ships):
             while True:
-                # Randomly choose a row and column to place the ship
+                #Randomly choose a row and column to place the ship
                 row = random.randint(0, self.size - 1)
                 col = random.randint(0, self.size - 1)
-                # If the chosen cell is empty, place the ship ('⚓') and add its location to hidden_ships set
+                #If the chosen cell is empty, place the ship ('⚓') and add its location to hidden_ships set
                 if self.grid[row][col] == ' ':
                     self.grid[row][col] = '⚓'
-                    # Add hidden ship location
+                    #Add hidden ship location
                     self.hidden_ships.add((row, col))
                     break
     
@@ -53,15 +53,15 @@ class Board:
         if (row, col) in self.hits:
             print("You alread shot there. Try a different location.")
             return False
-        # Add the guessed location to hits set
+        #Add the guessed location to hits set
         self.hits.add((row,col))
 
         if(row, col) in self.hidden_ships:
-            # If the guessed location contains a hidden ship, mark it as '💥'
+            #If the guessed location contains a hidden ship, mark it as '💥'
             self.grind[row][col] = '💥'
             return True
         elif self.grind[row][col] == ' ':
-            # If the guessed location is empty, mark it as '❌'
+            #If the guessed location is empty, mark it as '❌'
             self.grid[row][col] = '❌'
         return False
 
@@ -113,11 +113,11 @@ def get_valid_coordinate(promt, size, guessed_coordinates):
 def game():
     """Call all the necessary functions to run the game"""
 
-    # Initialize the game parameters
+    #Initialize the game parameters
     size = 5
     num_ships = 4
 
-    # The welcome messages and get the player's name
+    #The welcome messages and get the player's name
     print("-" * 35)
     print("Welcome to Emoji Battleships!")
     print(f"Board size: {size}, Number of ships: {num_ships}")
@@ -126,27 +126,33 @@ def game():
     player_name = input("Please enter your name: \n")
     print("-" * 35)
 
+    #Create player's and computer's boards
     player_board = Board(size)
     computer_board = Board(size)
 
+    #Place ships randomly on the boards
     player_board.place_ships(num_ships)
     computer_board.place_ships(num_ships)
 
+    #Initialize player and computer scores
     player_score = 0
     computer_score = 0
 
-    # List to store player's guesses
+    #Lists to store player's and computer's guesses
     player_gusses = []
-    # List to store computer's guesses
     computer_guesses = []
 
+    #The Game loop
     While True:
+
+    #Display the boards
     print(f"\n{player_name}'s Board:")
     player_board.display(show_ships=True)
 
     print("\nComputer's Board:")
     computer_board.display()
 
+    #Player's turn
     print("\nYour turn:")
     row = get_valid_coordinate("Enter row (0 to 4): ", size, player_guesses)
     col = get_valid_coordinate("Enter column (A to E): ", size, player_guesses)
@@ -169,7 +175,31 @@ def game():
             print(f"Congratulations, {player_name}! You won!\n")
             break
 
+        #Computer's turn
         print("Computer's turn:")
         computer_row, computer_col = computer_board.get_random_coordinate()
 
-       
+        #Record computer's guess
+        computer_coordinate = (computer_col, computer_row)
+        while computer_coordinate in computer_guesses:
+            computer_row, computer_col = computer_board.get_random_coordinate()
+            computer_coordinate = (computer_col, computer_row)
+
+        computer_guesses.append(computer_coordinate)
+
+        if player_board.make_guess(computer_row, computer_col):
+            print("The computer hit one of your ships! 💥\n")
+            computer_score += 1
+        else:
+            print("The computer missed!\n")
+
+        if computer_score == num_ships:
+            print("Sorry! The computer sunk all your ships. Better luck next time!\n")
+            break
+
+        #Display the summary after each round
+        summary(player_name, player_score, computer_score)
+
+#Execute the game function
+if __name__ == "__game__":
+    main()
