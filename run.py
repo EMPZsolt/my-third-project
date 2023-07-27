@@ -65,7 +65,13 @@ class Board:
             self.grid[row][col] = '❌'
         return False
 
-    #def get_random_coordinate():
+    def get_random_coordinate(self):
+        """To get a random valid coordinate for the computer's guess"""
+
+        row = random.randint(0, self.size - 1)
+        col = random.randint(0, self.size - 1)
+        return row, col
+
 
 #def summary():
 
