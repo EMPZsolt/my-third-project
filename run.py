@@ -31,7 +31,7 @@ class Board:
                     self.hidden_ships.add((row, col))
                     break
     
-    def display(self, show_ships=FALSE):
+    def display(self, show_ships=False):
         """To display the current state of the board"""
 
         print("\n   A  B  C  D  E")
@@ -47,9 +47,42 @@ class Board:
                 hidden_row = ['💥' if (i, j) in self.hits and (i, j) in self.hidden_ships else '❌' if (i, j) in self.hits else '🌊' for j, cell in enumerate(row)]
                 print(f"{i} {' '.join(hidden_row)}")
 
-    def make_guess()
+    def make_guess(self, row, col):
+        """To handle player's guesses and update the board accordingly"""
 
-    def get_random_coordinate()
+        if (row, col) in self.hits:
+            print("You alread shot there. Try a different location.")
+            return False
+        # Add the guessed location to hits set
+        self.hits.add((row,col))
 
-    
-        
+        if(row, col) in self.hidden_ships:
+            # If the guessed location contains a hidden ship, mark it as '💥'
+            self.grind[row][col] = '💥'
+            return True
+        elif self.grind[row][col] == ' ':
+            # If the guessed location is empty, mark it as '❌'
+            self.grid[row][col] = '❌'
+        return False
+
+    #def get_random_coordinate():
+
+#def summary():
+
+#def get_valid_coordinate():
+
+def game():
+    """Call all the necessary functions to run the game"""
+
+    # Initialize the game parameters
+    size = 5
+    num_ships = 4
+
+    # The welcome messages and get the player's name
+    print("-" * 35)
+    print("Welcome to Emoji Battleships!")
+    print(f"Board size: {size}, Number of ships: {num_ships}")
+    print("Coordinates row: 0-1-2-3-4, col: A-B-C-D-E")
+    print("-" * 35)
+    player_name = input("Please enter your name: \n")
+    print("-" * 35)
