@@ -125,3 +125,51 @@ def game():
     print("-" * 35)
     player_name = input("Please enter your name: \n")
     print("-" * 35)
+
+    player_board = Board(size)
+    computer_board = Board(size)
+
+    player_board.place_ships(num_ships)
+    computer_board.place_ships(num_ships)
+
+    player_score = 0
+    computer_score = 0
+
+    # List to store player's guesses
+    player_gusses = []
+    # List to store computer's guesses
+    computer_guesses = []
+
+    While True:
+    print(f"\n{player_name}'s Board:")
+    player_board.display(show_ships=True)
+
+    print("\nComputer's Board:")
+    computer_board.display()
+
+    print("\nYour turn:")
+    row = get_valid_coordinate("Enter row (0 to 4): ", size, player_guesses)
+    col = get_valid_coordinate("Enter column (A to E): ", size, player_guesses)
+
+    #Record player's guess
+    player_coordinate = (col, row)
+    if player_coordinate in player_guesses:
+        print("You already shot there. Try a different location.")
+        continue
+    
+    player_guesses.append(player_coordinate)
+
+    if computer_board.make_guess(row,col):
+        print("Perfect! You hit an enemy ship! 💥\n")
+            player_score += 1
+        else:
+            print("You missed!\n")
+        
+        if player_score == num_ships:
+            print(f"Congratulations, {player_name}! You won!\n")
+            break
+
+        print("Computer's turn:")
+        computer_row, computer_col = computer_board.get_random_coordinate()
+
+       
