@@ -31,7 +31,21 @@ class Board:
                     self.hidden_ships.add((row, col))
                     break
     
-    def display()
+    def display(self, show_ships=FALSE):
+        """To display the current state of the board"""
+
+        print("\n   A  B  C  D  E")
+        print("  +-+--+--+--+--+")
+        row_number = 1
+        for i, row in enumerate(self.grid):
+            if show_ships:
+                #If show_ships is True, display the ships ('⚓') and empty cells as '🌊'
+                display_row = [cell if cell != ' ' else '🌊' for cell in row]
+                print(f"{i} {' '.join(display_row)}")
+            else:
+                #Otherwise, show only hits ('💥'), misses ('❌'), and empty cells as '🌊'
+                hidden_row = ['💥' if (i, j) in self.hits and (i, j) in self.hidden_ships else '❌' if (i, j) in self.hits else '🌊' for j, cell in enumerate(row)]
+                print(f"{i} {' '.join(hidden_row)}")
 
     def make_guess()
 
