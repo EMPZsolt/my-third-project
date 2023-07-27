@@ -73,7 +73,13 @@ class Board:
         return row, col
 
 
-#def summary():
+def summary(player_name, player_score, computer_score):
+    """This function is responsible for displaying the score summary after each round."""
+
+    print("------------- Score Summary -------------")
+    print(f"{player_name}'s Score: {player_score}")
+    print("Computer's Score:", computer_score)
+    print("-----------------------------------------")
 
 #def get_valid_coordinate():
 
