@@ -143,7 +143,7 @@ def game():
     computer_guesses = []
 
     #The Game loop
-    While True:
+    while True:
 
     #Display the boards
     print(f"\n{player_name}'s Board:")
@@ -201,5 +201,5 @@ def game():
         summary(player_name, player_score, computer_score)
 
 #Execute the game function
-if __name__ == "__game__":
+if __name__ == "__main__":
     main()
