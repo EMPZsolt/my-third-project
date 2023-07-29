@@ -36,7 +36,7 @@ class Board:
     def display(self, show_ships=False):
         """To display the current state of the board"""
 
-        print("\n  A B C D E")
+        print("\n   A B C D E")
         print("  +-+-+-+-+-+")
         row_number = 1
         for i, row in enumerate(self.grid):
