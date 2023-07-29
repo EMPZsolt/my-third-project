@@ -36,8 +36,8 @@ class Board:
     def display(self, show_ships=False):
         """To display the current state of the board"""
 
-        print("\n   A  B  C  D  E")
-        print(" +--+--+--+--+--+")
+        print("\n  A B C D E")
+        print("  +-+-+-+-+-+")
         row_number = 1
         for i, row in enumerate(self.grid):
             if show_ships:
@@ -133,10 +133,10 @@ def game():
     print("Welcome to Emoji Battleships!")
     print("-" * 35)
     print("Game description")
-    print("The object of Battleship is to try and sink all of the computer's" +
+    print("The object of Battleship is to try and sink all of the computer's " +
           "before it sinks all of your ships.")
     print("All of the computer's ships are somewhere on its board.")
-    print("You try and hit them by calling out the coordinates of one of the" +
+    print("You try and hit them by calling out the coordinates of one of the " +
           "squares on the board.")
     print("Happy sailing and good hunt!")
     print("-" * 35)
@@ -147,11 +147,11 @@ def game():
     print("Infos")
     print("Coordinates: 0-A, 1-B, 2-C, 3-D, 4-E")
     print("Both types can be used based on the compliance rules.")
-    print("If the same coordinates are entered, the round is repeated")
-    print("The game ends when the player or the computer has sunk all the" +
-          "ships.")
+    print("If the same coordinates are entered, the round is repeated.")
+    print("The game ends when the player or the computer has sunk all the " +
+          "enemy ships.")
     print("-" * 35)
-    player_name = input("Please enter your name: \n")
+    player_name = input("Please enter your name:\n")
     print("-" * 35)
 
     # Create player's and computer's boards
