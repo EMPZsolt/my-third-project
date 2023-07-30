@@ -93,24 +93,29 @@ def summary(player_name, player_score, computer_score):
     print("-----------------------------------------")
 
 
-def get_valid_coordinate(promt, size, guessed_coordinates):
-    """This function validate the player's input for row and
+def get_valid_coordinate(prompt, size, guessed_coordinates):
+    """This function validates the player's input for row and
     column coordinates."""
 
     while True:
-        coordinate = input(promt)
+        # Get the input from the player
+        coordinate = input(prompt)
+
         # Check if input is alphabetic (A, B, C, etc.)
-        if coordinate.isalpha():
-            # Convert letter to numeric column index
+        if len(coordinate) == 1 and coordinate.isalpha():
+            # Convert letter to numeric column index (0 for A, 1 for B, etc.)
             col = ord(coordinate.upper()) - ord('A')
             if 0 <= col < size:
+                # Check if the chosen column coordinate is not already guessed
                 if (col, None) not in guessed_coordinates:
                     return col
             else:
-                print("Coordinates must be between A and " +
-                      f"{chr(ord('A') + size - 1)}.")
+                print(f"Coordinates must be between A" +
+                      f" and {chr(ord('A') + size - 1)}.")
         else:
             try:
+                """ If input is not alphabetic, try converting it to an integer
+                (numeric row coordinate)"""
                 row = int(coordinate)
                 if 0 <= row < size:
                     if (None, row) not in guessed_coordinates:
@@ -118,7 +123,10 @@ def get_valid_coordinate(promt, size, guessed_coordinates):
                 else:
                     print(f"Coordinates must be between 0 and {size - 1}.")
             except ValueError:
-                print("Invalid input. Please enter a number or a letter.")
+                """ If input cannot be converted to integer
+                or is not alphabetic, handle the error"""
+                print("Invalid input. Please enter a correct number or" +
+                      " a letter.")
 
 
 def game():
@@ -133,11 +141,11 @@ def game():
     print("Welcome to Emoji Battleships!")
     print("-" * 35)
     print("Game description")
-    print("The object of Battleship is to try and sink all of the computer's " +
-          "before it sinks all of your ships.")
+    print("The object of Battleship is to try and sink all of" +
+          "the computer's before it sinks all of your ships.")
     print("All of the computer's ships are somewhere on its board.")
-    print("You try and hit them by calling out the coordinates of one of the " +
-          "squares on the board.")
+    print("You try and hit them by calling out the coordinates of one of" +
+          "the squares on the board.")
     print("Happy sailing and good hunt!")
     print("-" * 35)
     print("Game features")
