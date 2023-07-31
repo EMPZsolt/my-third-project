@@ -27,9 +27,6 @@ This is a game that you will want to play over and over again. Battleships is al
 - [Testing](#testing)
      * [Bugs](#bugs)
      * [W3C Validator](#w3c-validator)
-     * [JSHint JavaScript Validator](#jshint-javascript-validator)
-     * [Lighthouse](#lighthouse)
-          * [Index page](#index-page)
 - [Credits](#credits)
      * [Code Used](#code-used)
      * [Content](#content)
@@ -53,5 +50,35 @@ This is a game that you will want to play over and over again. Battleships is al
 
 ## Features
 ### Existing Features
-- ![Intro text:](.)
+- Intro text:
+     - The game starts with a welcome message and a description (as well as the parameters and rules of the game).
+     ![](assets/images/intro.webp)
+     
+- The playground:    
+     - A two-player board is created with randomly placed ships.
+     - The computer's ships are hidden from the player.
+     - The game awaits for the coordinates.
+     ![](assets/images/boards.webp)
 
+- Coordinate input, results and scores summary:
+     - Start to play against the computer.
+     - Entering valid coordinates.
+     - Get the result from our and the computer randomized guess.
+     - Get a scores summary after each round.
+     ![](assets/images/guess-score_summary.webp)
+- Input validation:
+     - You can only choose within the grid.
+     - Only that input valid which meets the compliance rules.
+     - If you enter an already used coordinate, the round will repeat.
+     ![](assets/images/errors.webp)
+
+## Technologies Used
+### Languages Used
+Python were used to create program.
+### Libraries & Programs Used
+Git - For version control.
+Github - To save and store the files for the website.
+Tiny PNG - To compress images.
+FreeConvert - To compress images in the webp format.
+Am I Responsive? - To show the website image on a range of devices.
+Paint - To cut the images to the right size.
