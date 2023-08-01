@@ -3,7 +3,7 @@
 - [Live Site](https://emoji-battleships-5ae2f3e29783.herokuapp.com/)
 - [Repository](https://github.com/EMPZsolt/my-third-project)
 
-Emoji Battleships is a simple command-line game where players take turns trying to sink each other's ships on a 5x5 grid. The game is played against a computer opponent. The objective is to sink all of the computer's ships before the computer sinks all of your ships.
+Emoji Battleships is a simple command-line game where players take turns trying to sink each other's ships on a 5x5 grid. The game is played against a computer opponent. The objective is to sink all of the computer's ships before the computer sinks all of yours.
 
 This is a game that you will want to play over and over again. Battleships is all about of strategy, memory and logic. It's a great game for enhancing your concentration, training your motor skills and improving of your strategic thinking. Everyone from children to adults can play. For the little ones it can sharpen their mind and for the grown ups, you can have pleasant, fun moments, while they can recall their childhood in the meantime.
 
@@ -99,13 +99,13 @@ Python were used to create this game.
 ## Deployment
 The app was deployed to Heroku using the following steps:
 1. Create new app:
-- ![](assets/images/heroku_create.webp)
+![](assets/images/heroku_create.webp)
 2. Add buildpacks and config VARS:
-- ![](assets/images/heroku_vars_buildpacks.webp)
+![](assets/images/heroku_vars_buildpacks.webp)
 3. Connect Heroku to GitHub
 4. Authorise the connection
 5. Connect to the correct repository
-- ![](assets/images/heroku_deployment.webp)
+![](assets/images/heroku_deployment.webp)
      
 ## Testing
 Testing took place continuously during the entire construction. I used the print() statement during the build to try out new ideas and prevent or, if necessary, fix problems.
@@ -145,7 +145,7 @@ The game is thoroughly tested to ensure its functionality and user experience. T
  - The [emojis](https://unicode.org/emoji/charts/emoji-list.html) is from a public website.
  - The idea of the [board structure](https://www.youtube.com/watch?v=xz9GrOwQ_5E&t=0s) is from this YouTube video
  ### Acknowledgments
- I would like to acknowledge the following people who helped me along the way in completing my second milestone project:
+ I would like to acknowledge the following people who helped me along the way in completing my third milestone project:
  - My wife, who gave me ideas and supported me through the project.
  - My Mentor, Graeme Taylor, who showed the direction, helped and encouraged me.
  - Thank you to entire Code Isntitute for making my development possible.
