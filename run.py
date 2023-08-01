@@ -141,10 +141,10 @@ def game():
     print("Welcome to Emoji Battleships!")
     print("-" * 35)
     print("Game description")
-    print("The object of Battleship is to try and sink all of" +
+    print("The object of Battleship is to try and sink all of " +
           "the computer's before it sinks all of your ships.")
     print("All of the computer's ships are somewhere on its board.")
-    print("You try and hit them by calling out the coordinates of one of" +
+    print("You try and hit them by calling out the coordinates of one of " +
           "the squares on the board.")
     print("Happy sailing and good hunt!")
     print("-" * 35)
@@ -155,7 +155,8 @@ def game():
     print("Infos")
     print("Coordinates: 0-A, 1-B, 2-C, 3-D, 4-E")
     print("Both types can be used based on the compliance rules.")
-    print("If the same coordinates are entered, the round is repeated.")
+    print("If already used coordinates have been entered, the round will " +
+          "be repeated.")
     print("The game ends when the player or the computer has sunk all the " +
           "enemy ships.")
     print("-" * 35)
